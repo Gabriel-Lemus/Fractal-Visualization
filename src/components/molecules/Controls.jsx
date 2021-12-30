@@ -2,11 +2,11 @@ import React from 'react';
 import IterationCount from '../atoms/IterationCount';
 import FractalControls from './FractalControls';
 
-function Controls() {
+function Controls(props) {
   return (
     <section className="controls">
       <IterationCount />
-      <FractalControls iteration={0} />
+      <FractalControls iteration={props.iteration} />
     </section>
   );
 }
