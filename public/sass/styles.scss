@@ -4,12 +4,12 @@
 // Components styles
 // Atoms
 @import '../../src/components/atoms/FractalButton.scss';
-@import '../../src/components/atoms/Canvas.scss';
 @import '../../src/components/atoms/IterationCount.scss';
 @import '../../src/components/atoms/ControlButton.scss';
 @import '../../src/components/atoms/FooterText.scss';
 
 // Molecules
+@import '../../src/components/molecules/Canvas.scss';
 @import '../../src/components/molecules/ButtonsHeader.scss';
 @import '../../src/components/molecules/FractalControlButtons.scss';
 @import '../../src/components/molecules/FractalControls.scss';
