@@ -1,0 +1,12 @@
+@import '../../../public/sass/utilities/variables';
+
+.iteration-count {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.iteration {
+  font-size: 20px;
+}
