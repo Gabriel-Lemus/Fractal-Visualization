@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import FractalButton from './components/atoms/FractalButton';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className="buttons-header">
+        <FractalButton>Copo de Nieve de Koch</FractalButton>
+        <FractalButton>Copo de Nieve de Koch</FractalButton>
+        <FractalButton>Copo de Nieve de Koch</FractalButton>
+      </section>
+      <section className="fractal-canvas-section">
+        <canvas id="fractal-canvas"></canvas>
+      </section>
+      <section className="controls">
+        <section className="iteration-count">
+          <h3 className="iterations">Iteraciones: </h3>
+        </section>
+        <section className="fractal-controls">
+          <section className="fractal-control-buttons">
+            <FractalButton>{'<<'}</FractalButton>
+            <p className="fractal-iteration">abc</p>
+            <FractalButton>{'>>'}</FractalButton>
+          </section>
+          <section className="fractal-reset">
+            <FractalButton>Resetear</FractalButton>
+          </section>
+        </section>
+      </section>
+      <section className="footer">
+        <p className="footer-text">Creado por: Gabriel Lemus</p>
+      </section>
     </div>
   );
 }
