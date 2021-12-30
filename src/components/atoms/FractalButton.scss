@@ -1,0 +1,52 @@
+@import '../../../public/sass/utilities/variables';
+
+.fractal-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  color: $white;
+  background-color: $blue;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $darkBlue;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  // Media query for mobile devices
+  @media (max-width: 480px) {
+    margin-top: 1vh;
+    width: 100%;
+  }
+
+  /* Media query for low resolution tablets and ipads */
+  @media (min-width: 481px) and (max-width: 767px) {
+  }
+
+  // Media query for tablets and ipads in portrait mode
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 100%;
+    margin: 0 0.5vw;
+  }
+
+  // Media query for laptops and desktops
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    width: 100%;
+    margin: 0 0.5vw;
+  }
+
+  // Media query for large screens
+  @media (min-width: 1281px) {
+    width: 100%;
+    margin: 0 0.5vw;
+  }
+}
