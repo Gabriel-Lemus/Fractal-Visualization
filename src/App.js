@@ -1,34 +1,15 @@
-import FractalButton from './components/atoms/FractalButton';
+import Canvas from './components/atoms/Canvas';
+import ButtonsHeader from './components/molecules/ButtonsHeader';
+import Controls from './components/molecules/Controls';
+import Footer from './components/molecules/Footer';
 
 function App() {
   return (
     <div className="App">
-      <section className="buttons-header">
-        <FractalButton>Copo de Nieve de Koch</FractalButton>
-        <FractalButton>Copo de Nieve de Koch</FractalButton>
-        <FractalButton>Copo de Nieve de Koch</FractalButton>
-      </section>
-      <section className="fractal-canvas-section">
-        <canvas id="fractal-canvas"></canvas>
-      </section>
-      <section className="controls">
-        <section className="iteration-count">
-          <h3 className="iterations">Iteraciones: </h3>
-        </section>
-        <section className="fractal-controls">
-          <section className="fractal-control-buttons">
-            <FractalButton>{'<<'}</FractalButton>
-            <p className="fractal-iteration">abc</p>
-            <FractalButton>{'>>'}</FractalButton>
-          </section>
-          <section className="fractal-reset">
-            <FractalButton>Resetear</FractalButton>
-          </section>
-        </section>
-      </section>
-      <section className="footer">
-        <p className="footer-text">Creado por: Gabriel Lemus</p>
-      </section>
+      <ButtonsHeader />
+      <Canvas />
+      <Controls iteration={0} />
+      <Footer />
     </div>
   );
 }
