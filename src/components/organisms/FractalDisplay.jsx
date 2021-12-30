@@ -1,5 +1,5 @@
 import React from 'react';
-import Canvas from '../atoms/Canvas';
+import Canvas from '../molecules/Canvas';
 import ButtonsHeader from '../molecules/ButtonsHeader';
 import Controls from '../molecules/Controls';
 import Footer from '../molecules/Footer';
