@@ -11,8 +11,7 @@
   background-color: #5584ac;
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  /* Media query for low resolution tablets and ipads */ }
+  transition: all 0.2s ease-in-out; }
   .fractal-button:hover {
     background-color: #22577e; }
   .fractal-button:focus {
@@ -74,7 +73,6 @@
   width: 90%; }
 
 #fractal-canvas {
-  /* Media query for low resolution tablets and ipads */
   background-color: #22577e; }
   @media (max-width: 480px) {
     #fractal-canvas {
@@ -97,37 +95,36 @@
       width: 100%;
       height: 50vh; } }
 
-.buttons-header {
-  /* Media query for low resolution tablets and ipads */ }
-  @media (max-width: 480px) {
-    .buttons-header {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 90%;
-      margin: 0 auto; } }
-  @media (min-width: 481px) and (max-width: 767px) {
-    .buttons-header {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-items: center;
-      margin: 3.5vh 5%; } }
-  @media (min-width: 768px) {
-    .buttons-header {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      margin: 3.5vh 5%; } }
+@media (max-width: 480px) {
+  .buttons-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto; } }
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .buttons-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 3.5vh 5%; } }
+
+@media (min-width: 768px) {
+  .buttons-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3.5vh 5%; } }
 
 .fractal-control-buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  /* Media query for low resolution tablets and ipads */ }
+  align-items: center; }
   @media (max-width: 480px) {
     .fractal-control-buttons {
       width: 50%; } }
@@ -149,8 +146,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 3.5vh;
-  /* Media query for low resolution tablets and ipads */ }
+  margin-top: 3.5vh; }
   @media (max-width: 480px) {
     .fractal-controls {
       flex-direction: column;
@@ -181,8 +177,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items: center;
-  /* Media query for low resolution tablets and ipads */ }
+  align-items: center; }
   @media (max-width: 480px) {
     .footer {
       margin-top: 6vh; } }
@@ -203,8 +198,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  /* Media query for low resolution tablets and ipads */ }
+  align-items: center; }
   @media (max-width: 480px) {
     .fractal-reset {
       margin-top: 1.5vh;
