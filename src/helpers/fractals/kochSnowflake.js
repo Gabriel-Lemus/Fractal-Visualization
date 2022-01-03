@@ -1,7 +1,7 @@
 import helpers from '../helpers';
 import svgHelpers from '../svgHelpers';
 
-const getKochSnowflake = (iterations) => {
+const getKochSnowflake = (iteration) => {
   return svgHelpers.getSvgPolyline(
     [
       { x: 0, y: 0 },
