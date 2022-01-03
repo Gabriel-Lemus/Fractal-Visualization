@@ -1,12 +1,18 @@
 import React from 'react';
 import FractalButton from '../atoms/FractalButton';
 
-function ButtonsHeader() {
+function ButtonsHeader(props) {
   return (
     <section className="buttons-header">
-      <FractalButton>Copo de Nieve de Koch</FractalButton>
-      <FractalButton>Triángulo de Sierpinski</FractalButton>
-      <FractalButton>Esponja de Menger</FractalButton>
+      {props.children.map((fractal) => (
+        <FractalButton
+          key={props.children.indexOf(fractal)}
+          index={props.children.indexOf(fractal)}
+          active={fractal[1]}
+        >
+          {fractal[0]}
+        </FractalButton>
+      ))}
     </section>
   );
 }

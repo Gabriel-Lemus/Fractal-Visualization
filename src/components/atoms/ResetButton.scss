@@ -1,6 +1,6 @@
 @import '../../../public/sass/utilities/variables';
 
-.control-button {
+.reset-button {
   display: inline-block;
   padding: 0.5rem 1rem;
   border-radius: 7px;
@@ -24,13 +24,10 @@
   &:focus {
     outline: none;
   }
-}
 
-.disabled {
-  background-color: $disabledGray;
-  cursor: default;
-
-  &:hover {
-    background-color: $disabledGray;
+  // Media query for mobile devices
+  @media (max-width: 480px) {
+    display: block;
+    width: 100%;
   }
 }

@@ -8,63 +8,26 @@
   text-align: center;
   text-decoration: none;
   color: #ffffff;
-  background-color: #5584ac;
   border: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  /* Media query for low resolution tablets and ipads */ }
-  .fractal-button:hover {
-    background-color: #22577e; }
+  transition: all 0.2s ease-in-out; }
   .fractal-button:focus {
     outline: none; }
-  @media (max-width: 480px) {
+  @media (max-width: 767px) {
     .fractal-button {
       margin-top: 1vh;
       width: 100%; } }
-  @media (min-width: 768px) and (max-width: 1024px) {
+  @media (min-width: 768px) {
     .fractal-button {
-      width: 100%;
-      margin: 0 0.5vw; } }
-  @media (min-width: 1025px) and (max-width: 1280px) {
-    .fractal-button {
-      width: 100%;
-      margin: 0 0.5vw; } }
-  @media (min-width: 1281px) {
-    .fractal-button {
-      width: 100%;
-      margin: 0 0.5vw; } }
+      width: 29vw; } }
 
-.fractal-canvas-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 5vh 5%;
-  width: 90%; }
+.active {
+  background-color: #5584ac; }
 
-#fractal-canvas {
-  /* Media query for low resolution tablets and ipads */
-  background-color: #22577e; }
-  @media (max-width: 480px) {
-    #fractal-canvas {
-      width: 100%;
-      height: 35vh; } }
-  @media (min-width: 481px) and (max-width: 767px) {
-    #fractal-canvas {
-      width: 100%;
-      height: 40vh; } }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    #fractal-canvas {
-      width: 100%;
-      height: 40vh; } }
-  @media (min-width: 1025px) and (max-width: 1280px) {
-    #fractal-canvas {
-      width: 100%;
-      height: 45vh; } }
-  @media (min-width: 1281px) {
-    #fractal-canvas {
-      width: 100%;
-      height: 50vh; } }
+.inactive {
+  background-color: #808080; }
+  .inactive:hover {
+    cursor: pointer;
+    background-color: #22577e; }
 
 .iteration-count {
   display: flex;
@@ -89,91 +52,116 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   width: fit-content; }
-  .control-button:hover {
-    background-color: #22577e; }
+  @media (min-width: 768px) {
+    .control-button:hover {
+      background-color: #22577e; } }
   .control-button:focus {
     outline: none; }
 
-.fractal-reset {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  /* Media query for low resolution tablets and ipads */ }
-  @media (max-width: 480px) {
-    .fractal-reset {
-      margin-top: 1.5vh;
-      width: 70%; } }
-  @media (min-width: 481px) and (max-width: 767px) {
-    .fractal-reset {
-      width: 50%; } }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .fractal-reset {
-      width: 50%; } }
-  @media (min-width: 1025px) and (max-width: 1280px) {
-    .fractal-reset {
-      width: 50%; } }
-  @media (min-width: 1281px) {
-    .fractal-reset {
-      width: 50%; } }
+.disabled {
+  background-color: #808080;
+  cursor: default; }
+  .disabled:hover {
+    background-color: #808080; }
 
 .footer-text {
-  font-size: 16px; }
-
-.buttons-header {
-  /* Media query for low resolution tablets and ipads */ }
-  @media (max-width: 480px) {
-    .buttons-header {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 90%;
-      margin: 0 auto; } }
-  @media (min-width: 481px) and (max-width: 767px) {
-    .buttons-header {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-items: center;
-      margin: 3.5vh 5%; } }
+  font-size: 16px;
+  text-align: center; }
+  @media (max-width: 767px) {
+    .footer-text {
+      width: 75vw; } }
   @media (min-width: 768px) {
-    .buttons-header {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      margin: 3.5vh 5%; } }
+    .footer-text {
+      width: 100vw; } }
+
+.reset-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #5584ac;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: fit-content; }
+  @media (min-width: 768px) {
+    .reset-button:hover {
+      background-color: #22577e; } }
+  .reset-button:focus {
+    outline: none; }
+  @media (max-width: 480px) {
+    .reset-button {
+      display: block;
+      width: 100%; } }
+
+.fractal-canvas-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3vh 5%;
+  width: 90%; }
+
+#fractal-canvas {
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+  background-color: #22577e; }
+  @media (max-width: 480px) {
+    #fractal-canvas {
+      height: 37vh; } }
+  @media (min-width: 481px) and (max-width: 767px) {
+    #fractal-canvas {
+      height: 50vh; } }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    #fractal-canvas {
+      height: 55vh; } }
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    #fractal-canvas {
+      height: 60vh; } }
+  @media (min-width: 1281px) {
+    #fractal-canvas {
+      height: 65vh; } }
+
+@media (max-width: 767px) {
+  .buttons-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 2vh; } }
+
+@media (min-width: 768px) {
+  .buttons-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3.5vh 5%; } }
 
 .fractal-control-buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  /* Media query for low resolution tablets and ipads */ }
+  align-items: center; }
   @media (max-width: 480px) {
     .fractal-control-buttons {
       width: 50%; } }
-  @media (min-width: 481px) and (max-width: 767px) {
+  @media (min-width: 481px) {
     .fractal-control-buttons {
-      width: 30%; } }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .fractal-control-buttons {
-      width: 30%; } }
-  @media (min-width: 1025px) and (max-width: 1280px) {
-    .fractal-control-buttons {
-      width: 30%; } }
-  @media (min-width: 1281px) {
-    .fractal-control-buttons {
-      width: 30%; } }
+      width: 35%; } }
 
 .fractal-controls {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 3.5vh;
-  /* Media query for low resolution tablets and ipads */ }
+  margin-top: 3.5vh; }
   @media (max-width: 480px) {
     .fractal-controls {
       flex-direction: column;
@@ -205,22 +193,17 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  /* Media query for low resolution tablets and ipads */ }
+  margin-top: 5vh; }
+
+.fractal-reset {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50%; }
   @media (max-width: 480px) {
-    .footer {
-      margin-top: 6vh; } }
-  @media (min-width: 481px) and (max-width: 767px) {
-    .footer {
-      margin-top: 7vh; } }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .footer {
-      margin-top: 8vh; } }
-  @media (min-width: 1025px) and (max-width: 1280px) {
-    .footer {
-      margin-top: 9vh; } }
-  @media (min-width: 1281px) {
-    .footer {
-      margin-top: 10vh; } }
+    .fractal-reset {
+      margin-top: 1.5vh; } }
 
 * {
   box-sizing: border-box;

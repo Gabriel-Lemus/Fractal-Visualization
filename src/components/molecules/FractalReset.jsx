@@ -1,10 +1,10 @@
 import React from 'react';
-import ControlButton from '../atoms/ControlButton';
+import ResetButton from '../atoms/ResetButton';
 
 function FractalReset() {
   return (
     <section className="fractal-reset">
-      <ControlButton>Restablecer Fractal</ControlButton>
+      <ResetButton>Restablecer Fractal</ResetButton>
     </section>
   );
 }
