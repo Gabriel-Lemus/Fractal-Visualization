@@ -9,7 +9,7 @@ export const FractalsContext = createContext();
 
 function FractalDisplay() {
   const [fractals, setFractals] = useState(helpers.getFractals());
-  const [activeFractal, setActiveFractal] = useState({});
+  const [activeFractal, setActiveFractal] = useState(fractals[0]);
 
   useEffect(() => {
     setActiveFractal(fractals[0]);
@@ -24,7 +24,7 @@ function FractalDisplay() {
         {fractals.map((fractal) => [fractal.name, fractal.active])}
       </ButtonsHeader>
       <Canvas fractal={activeFractal} />
-      <Controls iteration={0} />
+      <Controls iteration={activeFractal.iterations} />
       <Footer />
     </FractalsContext.Provider>
   );
