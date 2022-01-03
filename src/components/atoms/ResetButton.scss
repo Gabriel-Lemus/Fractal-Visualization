@@ -31,3 +31,12 @@
     width: 100%;
   }
 }
+
+.disabled {
+  background-color: $disabledGray;
+
+  &:hover {
+    background-color: $disabledGray;
+    cursor: default;
+  }
+}
