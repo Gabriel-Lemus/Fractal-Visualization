@@ -5,8 +5,8 @@ import FractalControlButtons from './FractalControlButtons';
 function FractalControls(props) {
   return (
     <section className="fractal-controls">
-      <FractalControlButtons>{props.iteration}</FractalControlButtons>
-      <FractalReset />
+      <FractalControlButtons handleRedraw={props.handleRedraw}>{props.iteration}</FractalControlButtons>
+      <FractalReset handleRedraw={props.handleRedraw} />
     </section>
   );
 }

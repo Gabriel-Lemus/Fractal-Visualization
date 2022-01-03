@@ -1,7 +1,7 @@
 import helpers from '../helpers';
 import svgHelpers from '../svgHelpers';
 
-const getSierpinskiTriangle = (iterations) => {
+const getSierpinskiTriangle = (iteration) => {
   return svgHelpers.getSvgPolyline(
     [
       { x: 0, y: 0 },

@@ -7,6 +7,7 @@
   align-items: center;
   margin: 3vh 5%;
   width: $max-width;
+  transition: all 0.5s ease;
 }
 
 #fractal-canvas {
@@ -37,6 +38,4 @@
   @media (min-width: 1281px) {
     height: 65vh;
   }
-
-  background-color: $darkBlue;
 }

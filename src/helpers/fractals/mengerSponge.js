@@ -1,15 +1,83 @@
-import helpers from '../helpers';
 import svgHelpers from '../svgHelpers';
 
-const getMengerSponge = (iterations) => {
-  return svgHelpers.getSvgPolyline(
-    [
-      { x: 0, y: 0 },
-      { x: 10, y: 1 },
-    ],
-    helpers.PALETTE.darkBlue,
-    1
-  );
+/*
+ * Function that receives an array of SVG elements and divides them into the next iteration of the fractal
+ * @param {Array} previousIteration - Array of SVG elements that represent the previous iteration of the fractal
+ */
+const getNextIteration = (previousIteration) => {
+  const nextIteration = [];
+
+  previousIteration.forEach((sponge) => {
+    const points = svgHelpers.getPointsFromPath(sponge);
+    const sideLength = (points[1].y - points[0].y) / 3;
+    let newSponges = [];
+
+    for (let y = 0; y < 3; y++) {
+      for (let x = 0; x < 3; x++) {
+        if (x !== 1 || y !== 1) {
+          let newPoints = [
+            {
+              x: points[0].x + x * sideLength,
+              y: points[0].y + y * sideLength,
+            },
+            {
+              x: points[0].x + x * sideLength,
+              y: points[0].y + (y + 1) * sideLength,
+            },
+            {
+              x: points[0].x + (x + 1) * sideLength,
+              y: points[0].y + (y + 1) * sideLength,
+            },
+            {
+              x: points[0].x + (x + 1) * sideLength,
+              y: points[0].y + y * sideLength,
+            },
+          ];
+
+          newSponges.push(svgHelpers.getSquarePath(newPoints));
+        }
+      }
+    }
+
+    nextIteration.push(...newSponges);
+  });
+
+  return nextIteration;
+};
+
+/*
+ * Function to return an array of svgpaths that represent the menger sponge fractal
+ * @param {Number} iteration - The iteration of the fractal
+ */
+const getMengerSponge = (iteration) => {
+  if (iteration === 0) {
+    const { width, height } = svgHelpers.getSvgDimensions();
+    const { beginning, end } = svgHelpers.getDrawingArea();
+    let spongeValue1 = beginning;
+    let spongeValue2 = height;
+    let spongeValue3 = end;
+    let spongeValue4 = height;
+
+    if (height > width) {
+      spongeValue1 = width;
+      spongeValue2 = beginning;
+      spongeValue3 = width;
+      spongeValue4 = end;
+    }
+
+    const points = [
+      { x: beginning, y: 0 },
+      { x: spongeValue1, y: spongeValue2 },
+      { x: spongeValue3, y: spongeValue4 },
+      { x: end, y: 0 },
+    ];
+
+    const SVGSquare = svgHelpers.getSquarePath(points);
+
+    return [SVGSquare];
+  } else {
+    return getNextIteration(getMengerSponge(iteration - 1));
+  }
 };
 
 const kochSnowflake = {
