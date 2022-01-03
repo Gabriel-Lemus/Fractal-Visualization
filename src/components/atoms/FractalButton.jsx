@@ -2,10 +2,7 @@ import React, { useContext } from 'react';
 import { FractalsContext } from '../organisms/FractalDisplay';
 
 function FractalButton(props) {
-  const context = useContext(FractalsContext);
-  const fractals = context.fractals;
-  const setFractals = context.setFractals;
-  const setActiveFractal = context.setActiveFractal;
+  const { fractals, setFractals, setActiveFractal } = useContext(FractalsContext);
 
   // Change the active fractal
   const handleToggleFractalDisplay = () => {
