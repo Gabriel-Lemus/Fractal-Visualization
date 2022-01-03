@@ -8,12 +8,8 @@
   text-align: center;
   text-decoration: none;
   color: #ffffff;
-  background-color: #5584ac;
   border: none;
-  cursor: pointer;
   transition: all 0.2s ease-in-out; }
-  .fractal-button:hover {
-    background-color: #22577e; }
   .fractal-button:focus {
     outline: none; }
   @media (max-width: 767px) {
@@ -23,6 +19,15 @@
   @media (min-width: 768px) {
     .fractal-button {
       width: 29vw; } }
+
+.active {
+  background-color: #5584ac; }
+
+.inactive {
+  background-color: #808080; }
+  .inactive:hover {
+    cursor: pointer;
+    background-color: #22577e; }
 
 .iteration-count {
   display: flex;
@@ -47,10 +52,17 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   width: fit-content; }
-  .control-button:hover {
-    background-color: #22577e; }
+  @media (min-width: 768px) {
+    .control-button:hover {
+      background-color: #22577e; } }
   .control-button:focus {
     outline: none; }
+
+.disabled {
+  background-color: #808080;
+  cursor: default; }
+  .disabled:hover {
+    background-color: #808080; }
 
 .footer-text {
   font-size: 16px;
@@ -76,8 +88,9 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   width: fit-content; }
-  .reset-button:hover {
-    background-color: #22577e; }
+  @media (min-width: 768px) {
+    .reset-button:hover {
+      background-color: #22577e; } }
   .reset-button:focus {
     outline: none; }
   @media (max-width: 480px) {
