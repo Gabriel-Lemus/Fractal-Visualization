@@ -30,9 +30,18 @@ const getFractals = () => {
   ];
 };
 
+/*
+ * Function to return the copyright text
+ */
+const getCopyrightText = () => {
+  const currentYear = new Date().getFullYear();
+  return `© 2021 - ${currentYear} Gabriel Lemus | Todos los derechos reservados`;
+};
+
 const helpers = {
   PALETTE,
   getFractals,
+  getCopyrightText,
 };
 
 export default helpers;
