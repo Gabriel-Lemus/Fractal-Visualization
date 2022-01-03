@@ -5,14 +5,5 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-
-  // Media query for mobile devices, low resolution tablets and ipads, tablets and ipads in portrait mode and laptops and desktops
-  @media (max-width: 1280px) {
-    margin-top: 6vh;
-  }
-
-  // Media query for large screens
-  @media (min-width: 1281px) {
-    margin-top: 10vh;
-  }
+  margin-top: 5vh;
 }
