@@ -16,22 +16,13 @@
     background-color: #22577e; }
   .fractal-button:focus {
     outline: none; }
-  @media (max-width: 480px) {
+  @media (max-width: 767px) {
     .fractal-button {
       margin-top: 1vh;
       width: 100%; } }
-  @media (min-width: 768px) and (max-width: 1024px) {
+  @media (min-width: 768px) {
     .fractal-button {
-      width: 100%;
-      margin: 0 0.5vw; } }
-  @media (min-width: 1025px) and (max-width: 1280px) {
-    .fractal-button {
-      width: 100%;
-      margin: 0 0.5vw; } }
-  @media (min-width: 1281px) {
-    .fractal-button {
-      width: 100%;
-      margin: 0 0.5vw; } }
+      width: 29vw; } }
 
 .iteration-count {
   display: flex;
@@ -62,55 +53,75 @@
     outline: none; }
 
 .footer-text {
-  font-size: 16px; }
+  font-size: 16px;
+  text-align: center; }
+  @media (max-width: 767px) {
+    .footer-text {
+      width: 75vw; } }
+  @media (min-width: 768px) {
+    .footer-text {
+      width: 100vw; } }
+
+.reset-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #5584ac;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: fit-content; }
+  .reset-button:hover {
+    background-color: #22577e; }
+  .reset-button:focus {
+    outline: none; }
+  @media (max-width: 480px) {
+    .reset-button {
+      display: block;
+      width: 100%; } }
 
 .fractal-canvas-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 5vh 5%;
+  margin: 3vh 5%;
   width: 90%; }
 
 #fractal-canvas {
+  width: 100%;
+  transition: all 0.5s ease-in-out;
   background-color: #22577e; }
   @media (max-width: 480px) {
     #fractal-canvas {
-      width: 100%;
-      height: 35vh; } }
+      height: 37vh; } }
   @media (min-width: 481px) and (max-width: 767px) {
     #fractal-canvas {
-      width: 100%;
-      height: 40vh; } }
+      height: 50vh; } }
   @media (min-width: 768px) and (max-width: 1024px) {
     #fractal-canvas {
-      width: 100%;
-      height: 40vh; } }
+      height: 55vh; } }
   @media (min-width: 1025px) and (max-width: 1280px) {
     #fractal-canvas {
-      width: 100%;
-      height: 45vh; } }
+      height: 60vh; } }
   @media (min-width: 1281px) {
     #fractal-canvas {
-      width: 100%;
-      height: 50vh; } }
+      height: 65vh; } }
 
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   .buttons-header {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 90%;
-    margin: 0 auto; } }
-
-@media (min-width: 481px) and (max-width: 767px) {
-  .buttons-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 3.5vh 5%; } }
+    margin: 0 auto;
+    padding-top: 2vh; } }
 
 @media (min-width: 768px) {
   .buttons-header {
@@ -128,18 +139,9 @@
   @media (max-width: 480px) {
     .fractal-control-buttons {
       width: 50%; } }
-  @media (min-width: 481px) and (max-width: 767px) {
+  @media (min-width: 481px) {
     .fractal-control-buttons {
-      width: 30%; } }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .fractal-control-buttons {
-      width: 30%; } }
-  @media (min-width: 1025px) and (max-width: 1280px) {
-    .fractal-control-buttons {
-      width: 30%; } }
-  @media (min-width: 1281px) {
-    .fractal-control-buttons {
-      width: 30%; } }
+      width: 35%; } }
 
 .fractal-controls {
   display: flex;
@@ -177,44 +179,18 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items: center; }
-  @media (max-width: 480px) {
-    .footer {
-      margin-top: 6vh; } }
-  @media (min-width: 481px) and (max-width: 767px) {
-    .footer {
-      margin-top: 7vh; } }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .footer {
-      margin-top: 8vh; } }
-  @media (min-width: 1025px) and (max-width: 1280px) {
-    .footer {
-      margin-top: 9vh; } }
-  @media (min-width: 1281px) {
-    .footer {
-      margin-top: 10vh; } }
+  align-items: center;
+  margin-top: 5vh; }
 
 .fractal-reset {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  width: 50%; }
   @media (max-width: 480px) {
     .fractal-reset {
-      margin-top: 1.5vh;
-      width: 70%; } }
-  @media (min-width: 481px) and (max-width: 767px) {
-    .fractal-reset {
-      width: 50%; } }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .fractal-reset {
-      width: 50%; } }
-  @media (min-width: 1025px) and (max-width: 1280px) {
-    .fractal-reset {
-      width: 50%; } }
-  @media (min-width: 1281px) {
-    .fractal-reset {
-      width: 50%; } }
+      margin-top: 1.5vh; } }
 
 * {
   box-sizing: border-box;
