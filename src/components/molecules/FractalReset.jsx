@@ -1,10 +1,10 @@
 import React from 'react';
 import ResetButton from '../atoms/ResetButton';
 
-function FractalReset() {
+function FractalReset(props) {
   return (
     <section className="fractal-reset">
-      <ResetButton>Restablecer Fractal</ResetButton>
+      <ResetButton handleRedraw={props.handleRedraw}>Restablecer Fractal</ResetButton>
     </section>
   );
 }

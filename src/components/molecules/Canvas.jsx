@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-function Canvas() {
+function Canvas(props) {
+
+  useEffect(() => {
+    props.handleRedraw();
+
+    // Redraw fractal on window resize
+    window.addEventListener('resize', props.handleRedraw);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <section className="fractal-canvas-section">
-      <canvas id="fractal-canvas"></canvas>
+      <svg id="fractal-canvas"></svg>
     </section>
   );
 }
