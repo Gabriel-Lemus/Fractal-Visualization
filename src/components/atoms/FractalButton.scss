@@ -9,14 +9,8 @@
   text-align: center;
   text-decoration: none;
   color: $white;
-  background-color: $blue;
   border: none;
-  cursor: pointer;
   transition: all 0.2s ease-in-out;
-
-  &:hover {
-    background-color: $darkBlue;
-  }
 
   &:focus {
     outline: none;
@@ -32,4 +26,17 @@
   @media (min-width: 768px) {
     width: 29vw;
   }
+}
+
+.active {
+  background-color: $blue;
+}
+
+.active:hover {
+  cursor: pointer;
+  background-color: $darkBlue;
+}
+
+.inactive {
+  background-color: $disabledGray;
 }
