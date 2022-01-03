@@ -7,6 +7,7 @@ function ButtonsHeader(props) {
       {props.children.map((fractal) => (
         <FractalButton
           key={props.children.indexOf(fractal)}
+          index={props.children.indexOf(fractal)}
           active={fractal[1]}
         >
           {fractal[0]}
