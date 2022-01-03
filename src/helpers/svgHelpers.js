@@ -86,7 +86,7 @@ const setDrawingArea = () => {
     // Draw a svg square with length of the height of the svg element
     SVGDrawingArea.setAttribute(
       'd',
-      `M ${beginning} 0 L ${beginning} ${height} L ${end} ${height} L ${end} 0 L 0 0`
+      `M ${beginning} 0 L ${beginning} ${height} L ${end} ${height} L ${end} 0 L ${beginning} 0`
     );
   } else {
     const beginning = height / 2 - width / 2;
@@ -96,7 +96,7 @@ const setDrawingArea = () => {
     // Draw a svg square with length of the height of the svg element
     SVGDrawingArea.setAttribute(
       'd',
-      `M 0 ${beginning} L ${width} ${beginning} L ${width} ${end} L 0 ${end} L 0 0`
+      `M 0 ${beginning} L ${width} ${beginning} L ${width} ${end} L 0 ${end} L ${beginning} 0`
     );
   }
 
@@ -111,6 +111,17 @@ const clearSvg = () => {
   svg.innerHTML = '';
 };
 
+/*
+ * Function that receives an array of SVG elements and appends them to the SVG element
+ * @param {Array} elements - Array of SVG elements
+ */
+const appendSvgElements = (elements) => {
+  const svg = document.getElementById('fractal-canvas');
+  elements.forEach((element) => {
+    svg.appendChild(element);
+  });
+};
+
 const svgHelpers = {
   getSvgPolyline,
   getSvgDimensions,
@@ -118,6 +129,7 @@ const svgHelpers = {
   setDrawingArea,
   clearSvg,
   getDrawingArea,
+  appendSvgElements,
 };
 
 export default svgHelpers;
