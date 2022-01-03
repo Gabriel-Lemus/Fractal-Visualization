@@ -15,8 +15,10 @@
   transition: all 0.2s ease-in-out;
   width: fit-content;
 
-  &:hover {
-    background-color: $darkBlue;
+  @media (min-width: 768px) {
+    &:hover {
+      background-color: $darkBlue;
+    }
   }
 
   &:focus {
