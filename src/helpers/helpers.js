@@ -1,3 +1,7 @@
+import kochSnowflake from './fractals/kochSnowflake';
+import sierpinskiTriangle from './fractals/sierpinskiTriangle';
+import mengerSponge from './fractals/mengerSponge';
+
 // Color palette
 const PALETTE = {
   darkBlue: '#22577e',
@@ -14,17 +18,20 @@ const getFractals = () => {
   return [
     {
       name: 'Copo de Nieve de Koch',
-      svg: 0,
+      iterations: 0,
+      getFractal: kochSnowflake.getKochSnowflake,
       active: true,
     },
     {
       name: 'Triángulo de Sierpinski',
-      svg: 0,
+      iterations: 0,
+      getFractal: sierpinskiTriangle.getSierpinskiTriangle,
       active: false,
     },
     {
       name: 'Esponja de Menger',
-      svg: 0,
+      iterations: 0,
+      getFractal: mengerSponge.getMengerSponge,
       active: false,
     },
   ];
