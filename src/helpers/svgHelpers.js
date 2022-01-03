@@ -1,3 +1,5 @@
+import helpers from "./helpers";
+
 /*
  * Function to create a SVG polyline
  * @param {Array} points - Array of points
@@ -138,6 +140,26 @@ const getPointsFromPath = (path) => {
   return points;
 };
 
+/*
+ * Function that receives an array of 4 points and returns a square svg path
+ * @param {Array} points - Array of 4 points
+ */
+const getSquarePath = (points) => {
+  const SVGSquare = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'path'
+  );
+  SVGSquare.setAttribute('stroke-width', '1');
+  SVGSquare.setAttribute('fill', helpers.PALETTE.darkBlue);
+  SVGSquare.setAttribute('stroke', helpers.PALETTE.lightCyan);
+  SVGSquare.setAttribute(
+    'd',
+    `M ${points[0].x} ${points[0].y} L ${points[1].x} ${points[1].y} L ${points[2].x} ${points[2].y} L ${points[3].x} ${points[3].y} L ${points[0].x} ${points[0].y}`
+  );
+
+  return SVGSquare;
+};
+
 const svgHelpers = {
   getSvgPolyline,
   getSvgDimensions,
@@ -147,6 +169,7 @@ const svgHelpers = {
   getDrawingArea,
   appendSvgElements,
   getPointsFromPath,
+  getSquarePath,
 };
 
 export default svgHelpers;
