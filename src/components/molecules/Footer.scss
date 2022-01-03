@@ -5,29 +5,5 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  
-  // Media query for mobile devices
-  @media (max-width: 480px) {
-    margin-top: 6vh;
-  }
-
-  /* Media query for low resolution tablets and ipads */
-  @media (min-width: 481px) and (max-width: 767px) {
-    margin-top: 7vh;
-  }
-
-  // Media query for tablets and ipads in portrait mode
-  @media (min-width: 768px) and (max-width: 1024px) {
-    margin-top: 8vh;
-  }
-
-  // Media query for laptops and desktops
-  @media (min-width: 1025px) and (max-width: 1280px) {
-    margin-top: 9vh;
-  }
-
-  // Media query for large screens
-  @media (min-width: 1281px) {
-    margin-top: 10vh;
-  }
+  margin-top: 5vh;
 }

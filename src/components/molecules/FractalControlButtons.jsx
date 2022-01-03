@@ -4,9 +4,9 @@ import ControlButton from '../atoms/ControlButton';
 function FractalControlButtons(props) {
   return (
     <section className="fractal-control-buttons">
-      <ControlButton>{'<<'}</ControlButton>
+      <ControlButton decrease={true}/>
       <p className="fractal-iteration">{props.children}</p>
-      <ControlButton>{'>>'}</ControlButton>
+      <ControlButton decrease={false}/>
     </section>
   );
 }
