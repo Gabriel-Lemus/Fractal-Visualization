@@ -20,6 +20,7 @@ function ResetButton(props) {
       }
 
       setFractals(newFractals);
+      props.handleRedraw();
     }
   };
 

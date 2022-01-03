@@ -6,7 +6,7 @@ function FractalControls(props) {
   return (
     <section className="fractal-controls">
       <FractalControlButtons handleRedraw={props.handleRedraw}>{props.iteration}</FractalControlButtons>
-      <FractalReset />
+      <FractalReset handleRedraw={props.handleRedraw} />
     </section>
   );
 }
