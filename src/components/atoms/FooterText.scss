@@ -2,4 +2,15 @@
 
 .footer-text {
   font-size: 16px;
+  text-align: center;
+
+  // Media query for mobile devices
+  @media (max-width: 767px) {
+    width: 75vw;
+  }
+
+  // Media query for low resolution tablets, ipads, tablets and ipads in portrait mode, laptops, desktops and large screens
+  @media (min-width: 768px) {
+    width: 100vw;
+  }
 }

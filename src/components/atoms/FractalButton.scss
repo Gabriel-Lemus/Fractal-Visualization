@@ -23,13 +23,13 @@
   }
 
   // Media query for mobile devices
-  @media (max-width: 480px) {
+  @media (max-width: 767px) {
     margin-top: 1vh;
     width: 100%;
   }
 
   // Media query for the rest of the devices
-  @media (min-width: 481px) {
+  @media (min-width: 768px) {
     width: 29vw;
   }
 }

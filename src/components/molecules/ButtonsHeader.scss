@@ -2,7 +2,7 @@
 
 .buttons-header {
   // Media query for mobile devices
-  @media (max-width: 480px) {
+  @media (max-width: 767px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,7 +13,7 @@
   }
 
   // Media query for low resolution tablets, ipads, tablets and ipads in portrait mode, laptops, desktops and large screens
-  @media (min-width: 481px) {
+  @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
