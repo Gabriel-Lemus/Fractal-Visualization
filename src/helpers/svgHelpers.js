@@ -122,6 +122,22 @@ const appendSvgElements = (elements) => {
   });
 };
 
+/*
+ * Function that receives a path elemnent and returns an array of points
+ * @param {String} path - Path of the polyline
+ */
+const getPointsFromPath = (path) => {
+  const pathLength = Math.floor(path.getTotalLength());
+  const percentage = pathLength / 100;
+  const points = [];
+
+  for (let i = 0; i < 100; i += 25) {
+    points.push(path.getPointAtLength(percentage * i));
+  }
+
+  return points;
+};
+
 const svgHelpers = {
   getSvgPolyline,
   getSvgDimensions,
@@ -130,6 +146,7 @@ const svgHelpers = {
   clearSvg,
   getDrawingArea,
   appendSvgElements,
+  getPointsFromPath,
 };
 
 export default svgHelpers;
