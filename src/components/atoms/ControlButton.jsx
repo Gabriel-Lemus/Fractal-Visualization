@@ -4,10 +4,6 @@ import { FractalsContext } from '../organisms/FractalDisplay';
 function ControlButton(props) {
   const { fractals, setFractals, activeFractal } = useContext(FractalsContext);
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   // Handle the click event to change the fractal iteration
   const handleClick = (decrease) => {
     let newFractals = [];
@@ -28,6 +24,7 @@ function ControlButton(props) {
       newFractals.push(currentFractal);
     }
 
+    props.handleRedraw();
     setFractals(newFractals);
   };
 
