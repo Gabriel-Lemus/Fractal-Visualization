@@ -27,12 +27,11 @@ const getSvgDimensions = () => {
 };
 
 /*
- * Function to draw an outline to the SVG element
+ * Function to get the outline of the SVG element
  */
-const drawOutline = () => {
+const getOutline = () => {
   const { width, height } = getSvgDimensions();
 
-  const svg = document.getElementById('fractal-canvas');
   const outline = document.createElementNS(
     'http://www.w3.org/2000/svg',
     'path'
@@ -44,13 +43,81 @@ const drawOutline = () => {
   outline.setAttribute('stroke', 'black');
   outline.setAttribute('stroke-width', '1');
   outline.setAttribute('fill', 'none');
-  svg.appendChild(outline);
+
+  return outline;
+};
+
+/*
+ * Function to get the beginning and end of the drawing area
+ */
+const getDrawingArea = () => {
+  const { width, height } = getSvgDimensions();
+  let beginning = 0;
+  let end = 0;
+
+  if (height < width) {
+    beginning = width / 2 - height / 2;
+    end = width / 2 + height / 2;
+  } else {
+    beginning = height / 2 - width / 2;
+    end = height / 2 + width / 2;
+  }
+
+  return { beginning, end };
+};
+
+/*
+ * Function to set the main drawing area of the SVG element
+ */
+const setDrawingArea = () => {
+  const { width, height } = getSvgDimensions();
+  const SVGDrawingArea = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'path'
+  );
+  SVGDrawingArea.setAttribute('stroke-width', '1');
+  SVGDrawingArea.setAttribute('fill', 'none');
+
+  if (height < width) {
+    const beginning = width / 2 - height / 2;
+    const end = width / 2 + height / 2;
+
+    SVGDrawingArea.setAttribute('stroke', 'blue');
+    // Draw a svg square with length of the height of the svg element
+    SVGDrawingArea.setAttribute(
+      'd',
+      `M ${beginning} 0 L ${beginning} ${height} L ${end} ${height} L ${end} 0 L 0 0`
+    );
+  } else {
+    const beginning = height / 2 - width / 2;
+    const end = height / 2 + width / 2;
+
+    SVGDrawingArea.setAttribute('stroke', 'red');
+    // Draw a svg square with length of the height of the svg element
+    SVGDrawingArea.setAttribute(
+      'd',
+      `M 0 ${beginning} L ${width} ${beginning} L ${width} ${end} L 0 ${end} L 0 0`
+    );
+  }
+
+  return SVGDrawingArea;
+};
+
+/*
+ * Function to clear SVG element
+ */
+const clearSvg = () => {
+  const svg = document.getElementById('fractal-canvas');
+  svg.innerHTML = '';
 };
 
 const svgHelpers = {
   getSvgPolyline,
   getSvgDimensions,
-  drawOutline,
+  getOutline,
+  setDrawingArea,
+  clearSvg,
+  getDrawingArea,
 };
 
 export default svgHelpers;
