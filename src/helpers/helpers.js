@@ -19,20 +19,21 @@ const getFractals = () => {
     {
       name: 'Copo de Nieve de Koch',
       iterations: 0,
-      getFractal: kochSnowflake.getKochSnowflake,
-      active: true,
+      getFractal: (iteration) => kochSnowflake.getKochSnowflake(iteration),
+      active: false,
     },
     {
       name: 'Triángulo de Sierpinski',
       iterations: 0,
-      getFractal: sierpinskiTriangle.getSierpinskiTriangle,
+      getFractal: (iteration) =>
+        sierpinskiTriangle.getSierpinskiTriangle(iteration),
       active: false,
     },
     {
       name: 'Esponja de Menger',
       iterations: 0,
-      getFractal: mengerSponge.getMengerSponge,
-      active: false,
+      getFractal: (iteration) => mengerSponge.getMengerSponge(iteration),
+      active: true,
     },
   ];
 };
