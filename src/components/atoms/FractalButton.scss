@@ -32,11 +32,11 @@
   background-color: $blue;
 }
 
-.inactive:hover {
-  cursor: pointer;
-  background-color: $darkBlue;
-}
-
 .inactive {
   background-color: $disabledGray;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $darkBlue;
+  }
 }
