@@ -3,7 +3,7 @@ import svgHelpers from '../svgHelpers';
 /**
  * Function that receives an array of SVG elements and divides them into the next iteration of the fractal
  * @param {Array.<SVGPathElement>} previousIteration - Array of SVG elements that represent the previous iteration of the fractal
- * @returns {Array.<SVGPathElement>}
+ * @returns {Array.<SVGPathElement>} Array of SVG elements that represent the next iteration of the fractal
  */
 const getNextIteration = (previousIteration) => {
   const nextIteration = [];
@@ -49,7 +49,7 @@ const getNextIteration = (previousIteration) => {
 /**
  * Function that returns an array of SVG paths that represent the Menger Sponge fractal
  * @param {Number} iteration - The iteration of the fractal
- * @returns {Array.<SVGPathElement>}
+ * @returns {Array.<SVGPathElement>} Array of SVG elements that represent the Menger Sponge fractal
  */
 const getMengerSponge = (iteration) => {
   if (iteration === 0) {
