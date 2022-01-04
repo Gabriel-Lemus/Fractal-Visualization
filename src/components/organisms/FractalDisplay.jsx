@@ -10,7 +10,7 @@ export const FractalsContext = createContext();
 
 function FractalDisplay() {
   const [fractals, setFractals] = useState(helpers.getFractals());
-  const [activeFractal, setActiveFractal] = useState(fractals[2]);
+  const [activeFractal, setActiveFractal] = useState(fractals[1]);
 
   // Handle fractal redraw
   const handleRedraw = () => {
@@ -23,11 +23,12 @@ function FractalDisplay() {
     const SVGElements = [SVGOutline, drawingArea, ...fractal];
     svgHelpers.appendSvgElements(SVGElements);
   };
-  
+
+  // Handle fractal redraw when the active fractal changes
   useEffect(() => {
-    setActiveFractal(fractals[2]);
+    handleRedraw();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [activeFractal]);
 
   return (
     <FractalsContext.Provider
@@ -37,7 +38,10 @@ function FractalDisplay() {
         {fractals.map((fractal) => [fractal.name, fractal.active])}
       </ButtonsHeader>
       <Canvas fractal={activeFractal} handleRedraw={handleRedraw} />
-      <Controls iteration={activeFractal.iterations} handleRedraw={handleRedraw} />
+      <Controls
+        iteration={activeFractal.iterations}
+        handleRedraw={handleRedraw}
+      />
       <Footer />
     </FractalsContext.Provider>
   );
