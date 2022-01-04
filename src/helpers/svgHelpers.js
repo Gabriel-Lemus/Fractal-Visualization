@@ -1,10 +1,12 @@
-import helpers from "./helpers";
+import helpers from './helpers';
+import mathHelpers from './mathHelpers';
 
-/*
+/**
  * Function to create a SVG polyline
- * @param {Array} points - Array of points
+ * @param {Array.<{ x: Number, y: Number }>} points - Array of points
  * @param {String} color - Color of the polyline
- * @param {String} width - Stroke width of the polyline
+ * @param {Number} width - Stroke width of the polyline
+ * @returns {SVGPolylineElement} SVG polyline element
  */
 const getSvgPolyline = (points, color, width) => {
   const polyline = document.createElementNS(
@@ -19,8 +21,9 @@ const getSvgPolyline = (points, color, width) => {
   return polyline;
 };
 
-/*
+/**
  * Function to get the width and height of the svg element
+ * @returns {{ width: Number, height: Number }} Width and height of the svg element
  */
 const getSvgDimensions = () => {
   const svg = document.getElementById('fractal-canvas');
@@ -28,8 +31,9 @@ const getSvgDimensions = () => {
   return { width, height };
 };
 
-/*
+/**
  * Function to get the outline of the SVG element
+ * @returns {SVGPathElement} SVG path element
  */
 const getOutline = () => {
   const { width, height } = getSvgDimensions();
@@ -49,8 +53,9 @@ const getOutline = () => {
   return outline;
 };
 
-/*
+/**
  * Function to get the beginning and end of the drawing area
+ * @returns {{ beginning: Number, end: Number }} Beginning and end of the drawing area
  */
 const getDrawingArea = () => {
   const { width, height } = getSvgDimensions();
@@ -68,8 +73,9 @@ const getDrawingArea = () => {
   return { beginning, end };
 };
 
-/*
+/**
  * Function to set the main drawing area of the SVG element
+ * @returns {SVGPathElement} SVG path element
  */
 const setDrawingArea = () => {
   const { width, height } = getSvgDimensions();
@@ -85,7 +91,6 @@ const setDrawingArea = () => {
     const end = width / 2 + height / 2;
 
     SVGDrawingArea.setAttribute('stroke', 'blue');
-    // Draw a svg square with length of the height of the svg element
     SVGDrawingArea.setAttribute(
       'd',
       `M ${beginning} 0 L ${beginning} ${height} L ${end} ${height} L ${end} 0 L ${beginning} 0`
@@ -95,7 +100,6 @@ const setDrawingArea = () => {
     const end = height / 2 + width / 2;
 
     SVGDrawingArea.setAttribute('stroke', 'red');
-    // Draw a svg square with length of the height of the svg element
     SVGDrawingArea.setAttribute(
       'd',
       `M 0 ${beginning} L ${width} ${beginning} L ${width} ${end} L 0 ${end} L ${beginning} 0`
@@ -105,7 +109,7 @@ const setDrawingArea = () => {
   return SVGDrawingArea;
 };
 
-/*
+/**
  * Function to clear SVG element
  */
 const clearSvg = () => {
@@ -113,7 +117,7 @@ const clearSvg = () => {
   svg.innerHTML = '';
 };
 
-/*
+/**
  * Function that receives an array of SVG elements and appends them to the SVG element
  * @param {Array} elements - Array of SVG elements
  */
@@ -124,25 +128,29 @@ const appendSvgElements = (elements) => {
   });
 };
 
-/*
- * Function that receives a path elemnent and returns an array of points
- * @param {String} path - Path of the polyline
+/**
+ * Function that receives a path element and the number of divisions of the path and returns an array of points
+ * @param {SVGPathElement} path - SVG path element
+ * @param {Number} divisions - Number of divisions of the path
+ * @returns {Array.<DOMPoint>} Array of points
  */
-const getPointsFromPath = (path) => {
+const getPointsFromPath = (path, divisions) => {
   const pathLength = Math.floor(path.getTotalLength());
   const percentage = pathLength / 100;
+  const increment = 100 / divisions;
   const points = [];
 
-  for (let i = 0; i < 100; i += 25) {
+  for (let i = 0; i < 100; i += increment) {
     points.push(path.getPointAtLength(percentage * i));
   }
 
   return points;
 };
 
-/*
+/**
  * Function that receives an array of 4 points and returns a square svg path
- * @param {Array} points - Array of 4 points
+ * @param {Array.<Number>} points - Array of 4 points
+ * @returns {SVGPathElement} SVG path element
  */
 const getSquarePath = (points) => {
   const SVGSquare = document.createElementNS(
@@ -160,6 +168,50 @@ const getSquarePath = (points) => {
   return SVGSquare;
 };
 
+/**
+ * Function that receives the lower left point of an equilateral triangle and the sidelength and determines the other two points
+ * @param {{ x: Number, y: Number }} point - Lower left point of the equilateral triangle
+ * @param {Number} sidelength - Sidelength of the equilateral triangle
+ * @returns {Array.<{ x: Number, y: Number }>} Array of the points of the equilateral triangle
+ */
+const getEquilateralTrianglePoints = (point, sidelength) => {
+  const { x, y } = point;
+
+  const x2 = x + sidelength;
+  const x3 = x + sidelength * Math.cos(mathHelpers.degreesToRadians(60));
+  const y3 = y - sidelength * Math.sin(mathHelpers.degreesToRadians(60));
+
+  return [
+    { x: x, y: y },
+    { x: x2, y: y },
+    { x: x3, y: y3 },
+  ];
+};
+
+/**
+ * Function that receives an array of points and return a SVG path element
+ * @param {Array.<{ x: Number, y: Number }>} points - Array of points
+ * @returns {SVGPathElement} SVG path element
+ */
+const getTrianglePath = (points) => {
+  const SVGTriangle = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'path'
+  );
+  SVGTriangle.setAttribute('stroke-width', '1');
+  SVGTriangle.setAttribute('fill', helpers.PALETTE.darkBlue);
+  SVGTriangle.setAttribute('stroke', helpers.PALETTE.lightCyan);
+  SVGTriangle.setAttribute(
+    'd',
+    `M ${points[0].x} ${points[0].y} L ${points[1].x} ${points[1].y} L ${points[2].x} ${points[2].y} L ${points[0].x} ${points[0].y}`
+  );
+
+  return SVGTriangle;
+};
+
+/**
+ * Object that contains all the functions that help with SVG manipulation
+ */
 const svgHelpers = {
   getSvgPolyline,
   getSvgDimensions,
@@ -170,6 +222,8 @@ const svgHelpers = {
   appendSvgElements,
   getPointsFromPath,
   getSquarePath,
+  getEquilateralTrianglePoints,
+  getTrianglePath,
 };
 
 export default svgHelpers;

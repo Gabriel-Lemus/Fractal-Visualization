@@ -1,14 +1,15 @@
 import svgHelpers from '../svgHelpers';
 
-/*
+/**
  * Function that receives an array of SVG elements and divides them into the next iteration of the fractal
- * @param {Array} previousIteration - Array of SVG elements that represent the previous iteration of the fractal
+ * @param {Array.<SVGPathElement>} previousIteration - Array of SVG elements that represent the previous iteration of the fractal
+ * @returns {Array.<SVGPathElement>} Array of SVG elements that represent the next iteration of the fractal
  */
 const getNextIteration = (previousIteration) => {
   const nextIteration = [];
 
   previousIteration.forEach((sponge) => {
-    const points = svgHelpers.getPointsFromPath(sponge);
+    const points = svgHelpers.getPointsFromPath(sponge, 4);
     const sideLength = (points[1].y - points[0].y) / 3;
     let newSponges = [];
 
@@ -45,9 +46,10 @@ const getNextIteration = (previousIteration) => {
   return nextIteration;
 };
 
-/*
- * Function to return an array of svgpaths that represent the menger sponge fractal
+/**
+ * Function that returns an array of SVG paths that represent the Menger Sponge fractal
  * @param {Number} iteration - The iteration of the fractal
+ * @returns {Array.<SVGPathElement>} Array of SVG elements that represent the Menger Sponge fractal
  */
 const getMengerSponge = (iteration) => {
   if (iteration === 0) {
@@ -80,8 +82,11 @@ const getMengerSponge = (iteration) => {
   }
 };
 
-const kochSnowflake = {
+/**
+ * Object that represents the Menger Sponge fractal
+ */
+const mengerSponge = {
   getMengerSponge,
 };
 
-export default kochSnowflake;
+export default mengerSponge;

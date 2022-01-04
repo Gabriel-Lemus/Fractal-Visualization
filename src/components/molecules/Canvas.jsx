@@ -5,8 +5,9 @@ function Canvas(props) {
   useEffect(() => {
     props.handleRedraw();
 
-    // Redraw fractal on window resize
+    // Redraw fractal on window resize or orientation change
     window.addEventListener('resize', props.handleRedraw);
+    window.addEventListener('orientationchange', props.handleRedraw);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
