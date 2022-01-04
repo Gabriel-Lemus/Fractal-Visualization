@@ -11,7 +11,6 @@ const getNextIteration = (previousIteration) => {
 
   previousIteration.forEach((triangle) => {
     const points = svgHelpers.getPointsFromPath(triangle, 3);
-    console.log(points);
     const prevSideLength = points[1].x - points[0].x;
     const newSideLength = prevSideLength / 2;
     let newTriangles = [];
