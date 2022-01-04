@@ -4,7 +4,7 @@ import svgHelpers from '../svgHelpers';
 /**
  * Function that returns an array of SVG paths that represent the Koch Snowflake fractal
  * @param {Number} iteration - The iteration of the fractal
- * @returns {Array.<SVGPathElement>}
+ * @returns {Array.<SVGPathElement>} Array of SVG paths that represent the Koch Snowflake fractal
  */
 const getKochSnowflake = (iteration) => {
   const { width, height } = svgHelpers.getSvgDimensions();
