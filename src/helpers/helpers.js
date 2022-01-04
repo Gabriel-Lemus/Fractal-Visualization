@@ -2,7 +2,9 @@ import kochSnowflake from './fractals/kochSnowflake';
 import sierpinskiTriangle from './fractals/sierpinskiTriangle';
 import mengerSponge from './fractals/mengerSponge';
 
-// Color palette
+/**
+ * Color palette
+ */
 const PALETTE = {
   darkBlue: '#22577e',
   blue: '#5584ac',
@@ -11,7 +13,7 @@ const PALETTE = {
   white: '#ffffff',
 };
 
-/*
+/**
  * Function to return an array of the fractals to be displayed
  */
 const getFractals = () => {
@@ -20,7 +22,7 @@ const getFractals = () => {
       name: 'Copo de Nieve de Koch',
       iterations: 0,
       getFractal: (iteration) => kochSnowflake.getKochSnowflake(iteration),
-      active: false,
+      active: true,
     },
     {
       name: 'Triángulo de Sierpinski',
@@ -33,12 +35,12 @@ const getFractals = () => {
       name: 'Esponja de Menger',
       iterations: 0,
       getFractal: (iteration) => mengerSponge.getMengerSponge(iteration),
-      active: true,
+      active: false,
     },
   ];
 };
 
-/*
+/**
  * Function to return the copyright text
  */
 const getCopyrightText = () => {
@@ -46,6 +48,9 @@ const getCopyrightText = () => {
   return `© 2021 - ${currentYear} Gabriel Lemus | Todos los derechos reservados`;
 };
 
+/**
+ * General helpers
+ */
 const helpers = {
   PALETTE,
   getFractals,
