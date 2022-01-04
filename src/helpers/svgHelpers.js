@@ -1,4 +1,5 @@
 import helpers from './helpers';
+import mathHelpers from './mathHelpers';
 
 /**
  * Function to create a SVG polyline
@@ -19,8 +20,6 @@ const getSvgPolyline = (points, color, width) => {
 
   return polyline;
 };
-
-Math.cos();
 
 /**
  * Function to get the width and height of the svg element
@@ -130,16 +129,18 @@ const appendSvgElements = (elements) => {
 };
 
 /**
- * Function that receives a path element and returns an array of points
+ * Function that receives a path element and the number of divisions of the path and returns an array of points
  * @param {SVGPathElement} path - SVG path element
+ * @param {Number} divisions - Number of divisions of the path
  * @returns {Array.<DOMPoint>} Array of points
  */
-const getPointsFromPath = (path) => {
+const getPointsFromPath = (path, divisions) => {
   const pathLength = Math.floor(path.getTotalLength());
   const percentage = pathLength / 100;
+  const increment = 100 / divisions;
   const points = [];
 
-  for (let i = 0; i < 100; i += 25) {
+  for (let i = 0; i < 100; i += increment) {
     points.push(path.getPointAtLength(percentage * i));
   }
 
@@ -175,16 +176,37 @@ const getSquarePath = (points) => {
  */
 const getEquilateralTrianglePoints = (point, sidelength) => {
   const { x, y } = point;
+
   const x2 = x + sidelength;
-  const y2 = y + sidelength;
-  const x3 = x + sidelength / 2;
-  const y3 = y + (sidelength * Math.sqrt(3)) / 2;
+  const x3 = x + sidelength * Math.cos(mathHelpers.degreesToRadians(60));
+  const y3 = y - sidelength * Math.sin(mathHelpers.degreesToRadians(60));
 
   return [
-    { x, y },
-    { x: x2, y: y2 },
+    { x: x, y: y },
+    { x: x2, y: y },
     { x: x3, y: y3 },
   ];
+};
+
+/**
+ * Function that receives an array of points and return a SVG path element
+ * @param {Array.<{ x: Number, y: Number }>} points - Array of points
+ * @returns {SVGPathElement} SVG path element
+ */
+const getTrianglePath = (points) => {
+  const SVGTriangle = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'path'
+  );
+  SVGTriangle.setAttribute('stroke-width', '1');
+  SVGTriangle.setAttribute('fill', helpers.PALETTE.darkBlue);
+  SVGTriangle.setAttribute('stroke', helpers.PALETTE.lightCyan);
+  SVGTriangle.setAttribute(
+    'd',
+    `M ${points[0].x} ${points[0].y} L ${points[1].x} ${points[1].y} L ${points[2].x} ${points[2].y} L ${points[0].x} ${points[0].y}`
+  );
+
+  return SVGTriangle;
 };
 
 /**
@@ -201,6 +223,7 @@ const svgHelpers = {
   getPointsFromPath,
   getSquarePath,
   getEquilateralTrianglePoints,
+  getTrianglePath,
 };
 
 export default svgHelpers;
