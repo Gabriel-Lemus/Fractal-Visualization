@@ -10,7 +10,7 @@ export const FractalsContext = createContext();
 
 function FractalDisplay() {
   const [fractals, setFractals] = useState(helpers.getFractals());
-  const [activeFractal, setActiveFractal] = useState(fractals[1]);
+  const [activeFractal, setActiveFractal] = useState(fractals[0]);
 
   // Handle fractal redraw
   const handleRedraw = () => {
