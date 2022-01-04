@@ -15,6 +15,7 @@ const PALETTE = {
 
 /**
  * Function to return an array of the fractals to be displayed
+ * @returns {Array.<{ name: String, iterations: Number, getFractal: (iteration: Number) => Array.<SVGPathElement>, active: boolean }>}
  */
 const getFractals = () => {
   return [
@@ -42,6 +43,7 @@ const getFractals = () => {
 
 /**
  * Function to return the copyright text
+ * @returns {String} - Copyright text
  */
 const getCopyrightText = () => {
   const currentYear = new Date().getFullYear();
