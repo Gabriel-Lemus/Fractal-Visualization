@@ -1,6 +1,6 @@
-import helpers from "./helpers";
+import helpers from './helpers';
 
-/*
+/**
  * Function to create a SVG polyline
  * @param {Array} points - Array of points
  * @param {String} color - Color of the polyline
@@ -19,7 +19,7 @@ const getSvgPolyline = (points, color, width) => {
   return polyline;
 };
 
-/*
+/**
  * Function to get the width and height of the svg element
  */
 const getSvgDimensions = () => {
@@ -28,7 +28,7 @@ const getSvgDimensions = () => {
   return { width, height };
 };
 
-/*
+/**
  * Function to get the outline of the SVG element
  */
 const getOutline = () => {
@@ -49,7 +49,7 @@ const getOutline = () => {
   return outline;
 };
 
-/*
+/**
  * Function to get the beginning and end of the drawing area
  */
 const getDrawingArea = () => {
@@ -68,7 +68,7 @@ const getDrawingArea = () => {
   return { beginning, end };
 };
 
-/*
+/**
  * Function to set the main drawing area of the SVG element
  */
 const setDrawingArea = () => {
@@ -85,7 +85,6 @@ const setDrawingArea = () => {
     const end = width / 2 + height / 2;
 
     SVGDrawingArea.setAttribute('stroke', 'blue');
-    // Draw a svg square with length of the height of the svg element
     SVGDrawingArea.setAttribute(
       'd',
       `M ${beginning} 0 L ${beginning} ${height} L ${end} ${height} L ${end} 0 L ${beginning} 0`
@@ -95,7 +94,6 @@ const setDrawingArea = () => {
     const end = height / 2 + width / 2;
 
     SVGDrawingArea.setAttribute('stroke', 'red');
-    // Draw a svg square with length of the height of the svg element
     SVGDrawingArea.setAttribute(
       'd',
       `M 0 ${beginning} L ${width} ${beginning} L ${width} ${end} L 0 ${end} L ${beginning} 0`
@@ -105,7 +103,7 @@ const setDrawingArea = () => {
   return SVGDrawingArea;
 };
 
-/*
+/**
  * Function to clear SVG element
  */
 const clearSvg = () => {
@@ -113,7 +111,7 @@ const clearSvg = () => {
   svg.innerHTML = '';
 };
 
-/*
+/**
  * Function that receives an array of SVG elements and appends them to the SVG element
  * @param {Array} elements - Array of SVG elements
  */
@@ -124,7 +122,7 @@ const appendSvgElements = (elements) => {
   });
 };
 
-/*
+/**
  * Function that receives a path elemnent and returns an array of points
  * @param {String} path - Path of the polyline
  */
@@ -140,9 +138,9 @@ const getPointsFromPath = (path) => {
   return points;
 };
 
-/*
+/**
  * Function that receives an array of 4 points and returns a square svg path
- * @param {Array} points - Array of 4 points
+ * @param {Array.<Number>} points - Array of 4 points
  */
 const getSquarePath = (points) => {
   const SVGSquare = document.createElementNS(
@@ -160,6 +158,9 @@ const getSquarePath = (points) => {
   return SVGSquare;
 };
 
+/**
+ * Object that contains all the functions that help with SVG manipulation
+ */
 const svgHelpers = {
   getSvgPolyline,
   getSvgDimensions,
