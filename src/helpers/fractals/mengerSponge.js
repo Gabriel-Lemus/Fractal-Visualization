@@ -9,7 +9,7 @@ const getNextIteration = (previousIteration) => {
   const nextIteration = [];
 
   previousIteration.forEach((sponge) => {
-    const points = svgHelpers.getPointsFromPath(sponge);
+    const points = svgHelpers.getPointsFromPath(sponge, 4);
     const sideLength = (points[1].y - points[0].y) / 3;
     let newSponges = [];
 
