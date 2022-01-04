@@ -210,6 +210,33 @@ const getTrianglePath = (points) => {
 };
 
 /**
+ * Function that receives an array of array of two points and return an array of SVG polylines
+ * @param {Array.<Array.<{ x: Number, y: Number }>>} points - Array of array of two points
+ * @returns {Array.<SVGPolylineElement>} Array of SVG polyline elements
+ */
+const getPolylinesFromPoints = (points) => {
+  const polylines = [];
+
+  points.forEach((point) => {
+    const polyline = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'polyline'
+    );
+    polyline.setAttribute('stroke-width', '2');
+    polyline.setAttribute('stroke', helpers.PALETTE.darkBlue);
+    // polyline.setAttribute('stroke', helpers.PALETTE.lightCyan);
+    polyline.setAttribute(
+      'points',
+      `${point[0].x} ${point[0].y} ${point[1].x} ${point[1].y}`
+    );
+
+    polylines.push(polyline);
+  });
+
+  return polylines;
+};
+
+/**
  * Object that contains all the functions that help with SVG manipulation
  */
 const svgHelpers = {
@@ -224,6 +251,7 @@ const svgHelpers = {
   getSquarePath,
   getEquilateralTrianglePoints,
   getTrianglePath,
+  getPolylinesFromPoints,
 };
 
 export default svgHelpers;
