@@ -1,4 +1,3 @@
-import helpers from '../helpers';
 import svgHelpers from '../svgHelpers';
 
 /**
