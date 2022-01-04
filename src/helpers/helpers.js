@@ -43,7 +43,7 @@ const getFractals = () => {
 
 /**
  * Function to return the copyright text
- * @returns {String} - Copyright text
+ * @returns {String}
  */
 const getCopyrightText = () => {
   const currentYear = new Date().getFullYear();
