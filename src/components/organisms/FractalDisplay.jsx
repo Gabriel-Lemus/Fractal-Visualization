@@ -16,11 +16,14 @@ function FractalDisplay() {
   const handleRedraw = () => {
     svgHelpers.clearSvg();
 
+    const includeOutlines = false;
     const SVGOutline = svgHelpers.getOutline();
     const drawingArea = svgHelpers.setDrawingArea();
     const fractal = activeFractal.getFractal(activeFractal.iterations);
 
-    const SVGElements = [SVGOutline, drawingArea, ...fractal];
+    const SVGElements = includeOutlines
+      ? [SVGOutline, drawingArea, ...fractal]
+      : [...fractal];
     svgHelpers.appendSvgElements(SVGElements);
   };
 
