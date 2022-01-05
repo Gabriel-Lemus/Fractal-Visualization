@@ -42,6 +42,19 @@ const getPointBetweenTwoPoints = (beginning, end, distance) => {
 };
 
 /**
+ * Function to get the distance between two points
+ * @param {{ x: Number, y: Number }} point1 - First point
+ * @param {{ x: Number, y: Number }} point2 - Second point
+ * @returns {Number} Distance between the two points
+ */
+const getDistanceBetweenTwoPoints = (point1, point2) => {
+  const x = point2.x - point1.x;
+  const y = point2.y - point1.y;
+
+  return Math.sqrt(x * x + y * y);
+};
+
+/**
  * Object that contains the math functions
  */
 const mathHelpers = {
@@ -49,6 +62,7 @@ const mathHelpers = {
   radiansToDegrees,
   getEquilateralTriangleHeight,
   getPointBetweenTwoPoints,
+  getDistanceBetweenTwoPoints,
 };
 
 export default mathHelpers;
