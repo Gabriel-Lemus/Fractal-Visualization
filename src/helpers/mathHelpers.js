@@ -22,9 +22,23 @@ const radiansToDegrees = (radians) => {
  * @returns {Number} Height of the equilateral triangle
  */
 const getEquilateralTriangleHeight = (sidelength) => {
-  const height = sidelength / 2 * Math.sqrt(3);
+  const height = (sidelength / 2) * Math.sqrt(3);
 
   return height;
+};
+
+/**
+ * Function to get the point between two points given a distance
+ * @param {{ x: Number, y: Number }} beginning - First point
+ * @param {{ x: Number, y: Number }} end - Second point
+ * @param {Number} distance - Ratio of the distance between the two points
+ * @returns {{ x: Number, y: Number }} Point between the two points
+ */
+const getPointBetweenTwoPoints = (beginning, end, distance) => {
+  const x = beginning.x + (end.x - beginning.x) * distance;
+  const y = beginning.y + (end.y - beginning.y) * distance;
+
+  return { x, y };
 };
 
 /**
@@ -34,6 +48,7 @@ const mathHelpers = {
   degreesToRadians,
   radiansToDegrees,
   getEquilateralTriangleHeight,
+  getPointBetweenTwoPoints,
 };
 
 export default mathHelpers;
