@@ -17,7 +17,9 @@ function ControlButton(props) {
             currentFractal.iterations--;
           }
         } else {
-          currentFractal.iterations++;
+          if (currentFractal.iterations < currentFractal.maxIterations) {
+            currentFractal.iterations++;
+          }
         }
       }
 
@@ -34,7 +36,11 @@ function ControlButton(props) {
         'control-button ' +
         (props.decrease ? 'decrease' : 'increase') +
         ' ' +
-        (activeFractal.iterations === 0 && props.decrease ? 'disabled' : '')
+        ((activeFractal.iterations === 0 && props.decrease) ||
+        (activeFractal.iterations === activeFractal.maxIterations &&
+          !props.decrease)
+          ? 'disabled'
+          : '')
       }
       onClick={() => handleClick(props.decrease)}
     >
