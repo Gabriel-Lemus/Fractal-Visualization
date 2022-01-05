@@ -22,9 +22,49 @@ const radiansToDegrees = (radians) => {
  * @returns {Number} Height of the equilateral triangle
  */
 const getEquilateralTriangleHeight = (sidelength) => {
-  const height = sidelength / 2 * Math.sqrt(3);
+  const height = (sidelength / 2) * Math.sqrt(3);
 
   return height;
+};
+
+/**
+ * Function to get the point between two points given a distance
+ * @param {{ x: Number, y: Number }} beginning - First point
+ * @param {{ x: Number, y: Number }} end - Second point
+ * @param {Number} distance - Ratio of the distance between the two points
+ * @returns {{ x: Number, y: Number }} Point between the two points
+ */
+const getPointBetweenTwoPoints = (beginning, end, distance) => {
+  const x = beginning.x + (end.x - beginning.x) * distance;
+  const y = beginning.y + (end.y - beginning.y) * distance;
+
+  return { x, y };
+};
+
+/**
+ * Function to get the distance between two points
+ * @param {{ x: Number, y: Number }} point1 - First point
+ * @param {{ x: Number, y: Number }} point2 - Second point
+ * @returns {Number} Distance between the two points
+ */
+const getDistanceBetweenTwoPoints = (point1, point2) => {
+  const x = point2.x - point1.x;
+  const y = point2.y - point1.y;
+
+  return Math.sqrt(x * x + y * y);
+};
+
+/**
+ * Function to get the angle in degrees between two points
+ * @param {{ x: Number, y: Number }} point1 - First point
+ * @param {{ x: Number, y: Number }} point2 - Second point
+ * @returns {Number} Angle between the two points
+ */
+const getAngleBetweenTwoPoints = (point1, point2) => {
+  const x = point2.x - point1.x;
+  const y = point2.y - point1.y;
+
+  return radiansToDegrees(Math.atan2(y, x));
 };
 
 /**
@@ -34,6 +74,9 @@ const mathHelpers = {
   degreesToRadians,
   radiansToDegrees,
   getEquilateralTriangleHeight,
+  getPointBetweenTwoPoints,
+  getDistanceBetweenTwoPoints,
+  getAngleBetweenTwoPoints,
 };
 
 export default mathHelpers;
