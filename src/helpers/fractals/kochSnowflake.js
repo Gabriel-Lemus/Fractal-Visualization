@@ -64,8 +64,6 @@ const getNextSegment = (polyline, counter) => {
 const getNextIteration = (previousIteration) => {
   let pointsList = [];
   let points = previousIteration[0].points;
-  console.log(points);
-  console.log(points[0]);
 
   for (let i = 0; i < points.length - 1; i++) {
     const polyline = document.createElementNS(
