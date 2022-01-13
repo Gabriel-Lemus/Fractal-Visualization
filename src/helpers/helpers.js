@@ -57,7 +57,7 @@ const getFractals = () => {
  */
 const getCopyrightText = () => {
   const currentYear = new Date().getFullYear();
-  return `© 2021 - ${currentYear} Gabriel Lemus | Todos los derechos reservados`;
+  return `© 2021 - ${currentYear} Gabriel Lemus`;
 };
 
 /**
