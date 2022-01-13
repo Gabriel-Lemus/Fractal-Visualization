@@ -263,6 +263,49 @@ const getPolylineFromPolylines = (polylines, width) => {
 }
 
 /**
+ * Function that receives an SVG polyline element and deconcatenates its points
+ * into an array of polylines
+ * @param {SVGPolylineElement} polyline - SVG polyline element
+ * @returns {Array.<SVGPolylineElement>} Array of SVG polyline elements
+ */
+const getPolylinesFromPolyline = (polyline) => {
+  const polylines = [];
+  const points = polyline.points.split(' ');
+
+  for (let i = 0; i < points.length - 1; i += 2) {
+    const polyline = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'polyline'
+    );
+    polyline.setAttribute('stroke-width', '1');
+    polyline.setAttribute('stroke', helpers.PALETTE.darkBlue);
+    polyline.setAttribute(
+      'points',
+      `${points[i]} ${points[i + 1]}`
+    );
+
+    polylines.push(polyline);
+
+    if (i === points.length - 2) {
+      const polyline = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'polyline'
+      );
+      polyline.setAttribute('stroke-width', '1');
+      polyline.setAttribute('stroke', helpers.PALETTE.darkBlue);
+      polyline.setAttribute(
+        'points',
+        `${points[i]} ${points[i + 1]} ${points[0]} ${points[1]}`
+      );
+
+      polylines.push(polyline);
+    }
+  }
+
+  return polylines;
+};
+
+/**
  * Object that contains all the functions that help with SVG manipulation
  */
 const svgHelpers = {
@@ -279,6 +322,7 @@ const svgHelpers = {
   getTrianglePath,
   getPolylinesFromPoints,
   getPolylineFromPolylines,
+  getPolylinesFromPolyline,
 };
 
 export default svgHelpers;
