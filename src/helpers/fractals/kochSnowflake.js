@@ -62,6 +62,29 @@ const getNextSegment = (polyline, counter) => {
  * @returns {Array.<SVGPolylineElement>} Array of SVG polylines elements that represent the next iteration of the fractal
  */
 const getNextIteration = (previousIteration) => {
+  let pointsList = [];
+  let points = previousIteration[0].points;
+  console.log(points);
+  console.log(points[0]);
+
+  for (let i = 0; i < points.length - 1; i++) {
+    const polyline = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'polyline'
+    );
+    polyline.setAttribute('stroke-width', SNOWFLAKEWIDTH);
+    polyline.setAttribute('stroke', 'black');
+    polyline.setAttribute('fill', 'none');
+    polyline.setAttribute(
+      'points',
+      `${points[i].x},${points[i].y} ${points[i + 1].x},${points[i + 1].y}`
+    );
+
+    pointsList.push(polyline);
+  }
+
+  previousIteration = pointsList;
+
   let nextIteration = [];
   let counter = 0;
 
@@ -83,7 +106,9 @@ const getNextIteration = (previousIteration) => {
     counter = (counter + 1) % 3;
   });
 
-  return nextIteration;
+  nextIteration = svgHelpers.getPolylineFromPolylines(nextIteration, points.length < 769 ? SNOWFLAKEWIDTH : 1);
+
+  return [nextIteration];
 };
 
 /**
@@ -113,12 +138,14 @@ const getKochSnowflake = (iteration) => {
       [trianglePoints[2], trianglePoints[0]],
     ];
 
-    const snowflake = svgHelpers.getPolylinesFromPoints(
+    let snowflake = svgHelpers.getPolylinesFromPoints(
       lineSegments,
       SNOWFLAKEWIDTH
     );
 
-    return snowflake;
+    snowflake = svgHelpers.getPolylineFromPolylines(snowflake, SNOWFLAKEWIDTH);
+
+    return [snowflake];
   } else {
     let nextIteration = getNextIteration(getKochSnowflake(iteration - 1));
     let sides = [];

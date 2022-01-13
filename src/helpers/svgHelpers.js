@@ -237,6 +237,72 @@ const getPolylinesFromPoints = (points, width) => {
 };
 
 /**
+ * Function that receives an array of SVG polyline elements, concatenates their
+ * points and returns an array with a single SVG polyline element
+ * @param {Array.<SVGPolylineElement>} polylines - Array of SVG polyline elements
+ * @returns {SVGPolylineElement} SVG polyline element
+ */
+const getPolylineFromPolylines = (polylines, width) => {
+  let pointsList = '';
+
+  polylines.forEach((polyline) => {
+    pointsList += polyline.points[0].x + ',' + polyline.points[0].y + ' ';
+  });
+  pointsList += polylines[0].points[0].x + ',' + polylines[0].points[0].y;
+
+  const polyline = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'polyline'
+  );
+  polyline.setAttribute('stroke-width', width);
+  polyline.setAttribute('stroke', helpers.PALETTE.darkBlue);
+  polyline.setAttribute('points', pointsList);
+  polyline.setAttribute('fill', 'none');
+
+  return polyline;
+};
+
+/**
+ * Function that receives an SVG polyline element and deconcatenates its points
+ * into an array of polylines
+ * @param {SVGPolylineElement} polyline - SVG polyline element
+ * @returns {Array.<SVGPolylineElement>} Array of SVG polyline elements
+ */
+const getPolylinesFromPolyline = (polyline) => {
+  const polylines = [];
+  const points = polyline.points.split(' ');
+
+  for (let i = 0; i < points.length - 1; i += 2) {
+    const polyline = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'polyline'
+    );
+    polyline.setAttribute('stroke-width', '1');
+    polyline.setAttribute('stroke', helpers.PALETTE.darkBlue);
+    polyline.setAttribute('points', `${points[i]} ${points[i + 1]}`);
+
+    polylines.push(polyline);
+
+    if (i === points.length - 2) {
+      const polyline = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'polyline'
+      );
+      polyline.setAttribute('stroke-width', '1');
+      polyline.setAttribute('stroke', helpers.PALETTE.darkBlue);
+      polyline.setAttribute(
+        'points',
+        `${points[i]} ${points[i + 1]} ${points[0]} ${points[1]}`
+      );
+
+      polylines.push(polyline);
+    }
+  }
+
+  return polylines;
+};
+
+/**
  * Object that contains all the functions that help with SVG manipulation
  */
 const svgHelpers = {
@@ -252,6 +318,8 @@ const svgHelpers = {
   getEquilateralTrianglePoints,
   getTrianglePath,
   getPolylinesFromPoints,
+  getPolylineFromPolylines,
+  getPolylinesFromPolyline,
 };
 
 export default svgHelpers;
