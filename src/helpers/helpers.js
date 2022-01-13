@@ -3,6 +3,13 @@ import sierpinskiTriangle from './fractals/sierpinskiTriangle';
 import mengerSponge from './fractals/mengerSponge';
 
 /**
+ * Style constants
+ */
+const STYLES = {
+  maxWidth: '90%',
+}
+
+/**
  * Color palette
  */
 const PALETTE = {
@@ -57,6 +64,7 @@ const getCopyrightText = () => {
  * General helpers
  */
 const helpers = {
+  STYLES,
   PALETTE,
   getFractals,
   getCopyrightText,
