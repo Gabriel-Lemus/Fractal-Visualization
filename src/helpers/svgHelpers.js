@@ -237,6 +237,32 @@ const getPolylinesFromPoints = (points, width) => {
 };
 
 /**
+ * Function that receives an array of SVG polyline elements, concatenates their
+ * points and returns an array with a single SVG polyline element
+ * @param {Array.<SVGPolylineElement>} polylines - Array of SVG polyline elements
+ * @returns {SVGPolylineElement} SVG polyline element
+ */
+const getPolylineFromPolylines = (polylines, width) => {
+  let pointsList = '';
+
+  polylines.forEach((polyline) => {
+    pointsList += polyline.points[0].x + ',' + polyline.points[0].y + ' ';
+  });
+  pointsList += polylines[0].points[0].x + ',' + polylines[0].points[0].y;
+
+  const polyline = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'polyline'
+  );
+  polyline.setAttribute('stroke-width', width);
+  polyline.setAttribute('stroke', helpers.PALETTE.darkBlue);
+  polyline.setAttribute('points', pointsList);
+  polyline.setAttribute('fill', 'none');
+
+  return polyline;
+}
+
+/**
  * Object that contains all the functions that help with SVG manipulation
  */
 const svgHelpers = {
@@ -252,6 +278,7 @@ const svgHelpers = {
   getEquilateralTrianglePoints,
   getTrianglePath,
   getPolylinesFromPoints,
+  getPolylineFromPolylines,
 };
 
 export default svgHelpers;
