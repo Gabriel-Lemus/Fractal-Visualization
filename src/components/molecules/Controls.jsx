@@ -6,7 +6,10 @@ function Controls(props) {
   return (
     <section className="controls">
       <IterationCount />
-      <FractalControls iteration={props.iteration} handleRedraw={props.handleRedraw} />
+      <FractalControls
+        iteration={props.iteration}
+        handleRedraw={props.handleRedraw}
+      />
     </section>
   );
 }
