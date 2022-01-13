@@ -48,13 +48,10 @@ const MengerSponge = {
  * @returns {Array.<{ name: String, iterations: Number, getFractal: (iteration: Number) => Array.<SVGPathElement>, active: boolean }>} Array of fractals
  */
 const getFractals = () => {
-  let activeFractalIdx = parseInt(localStorage.getItem('activeFractalIdx'));
   let fractals = [KochSnowflake, SierpinskiTriangle, MengerSponge];
+  let activeFractalIdx = 0;
 
-  if (!activeFractalIdx) {
-    activeFractalIdx = 0;
-    localStorage.setItem('activeFractalIdx', activeFractalIdx);
-  }
+  localStorage.clear();
 
   for (let i = 0; i < fractals.length; i++) {
     if (i === activeFractalIdx) {
