@@ -1,18 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import helpers from '../../helpers/helpers';
 
-function Canvas(props) {
+function Canvas() {
   const windowWidth = window.innerWidth;
-
-  useEffect(() => {
-    props.handleRedraw();
-
-    // Redraw fractal on window resize or orientation change
-    window.addEventListener('resize', props.handleRedraw);
-    window.addEventListener('orientationchange', props.handleRedraw);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <section
