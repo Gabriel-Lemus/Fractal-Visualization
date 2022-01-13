@@ -10,7 +10,7 @@ export const FractalsContext = createContext();
 
 function FractalDisplay() {
   const [fractals, setFractals] = useState(helpers.getFractals());
-  let activeFractal = fractals.find(fractal => fractal.active);
+  let activeFractal = fractals.find((fractal) => fractal.active);
 
   // Handle fractal redraw
   const handleRedraw = () => {
@@ -34,7 +34,7 @@ function FractalDisplay() {
     // Redraw fractal on window resize or orientation change
     window.addEventListener('resize', handleRedraw);
     window.addEventListener('orientationchange', handleRedraw);
-    
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeFractal]);
 
