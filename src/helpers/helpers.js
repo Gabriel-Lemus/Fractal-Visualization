@@ -7,7 +7,7 @@ import mengerSponge from './fractals/mengerSponge';
  */
 const STYLES = {
   maxWidth: '90%',
-}
+};
 
 /**
  * Color palette
@@ -20,35 +20,51 @@ const PALETTE = {
   white: '#ffffff',
 };
 
+// Fractals
+const KochSnowflake = {
+  name: 'Copo de Nieve de Koch',
+  iterations: 0,
+  maxIterations: 5,
+  getFractal: (iteration) => kochSnowflake.getKochSnowflake(iteration),
+};
+
+const SierpinskiTriangle = {
+  name: 'Triángulo de Sierpinski',
+  iterations: 0,
+  maxIterations: 7,
+  getFractal: (iteration) =>
+    sierpinskiTriangle.getSierpinskiTriangle(iteration),
+};
+
+const MengerSponge = {
+  name: 'Esponja de Menger',
+  iterations: 0,
+  maxIterations: 4,
+  getFractal: (iteration) => mengerSponge.getMengerSponge(iteration),
+};
+
 /**
  * Function to return an array of the fractals to be displayed
  * @returns {Array.<{ name: String, iterations: Number, getFractal: (iteration: Number) => Array.<SVGPathElement>, active: boolean }>} Array of fractals
  */
 const getFractals = () => {
-  return [
-    {
-      name: 'Copo de Nieve de Koch',
-      iterations: 0,
-      maxIterations: 5,
-      getFractal: (iteration) => kochSnowflake.getKochSnowflake(iteration),
-      active: true,
-    },
-    {
-      name: 'Triángulo de Sierpinski',
-      iterations: 0,
-      maxIterations: 7,
-      getFractal: (iteration) =>
-        sierpinskiTriangle.getSierpinskiTriangle(iteration),
-      active: false,
-    },
-    {
-      name: 'Esponja de Menger',
-      iterations: 0,
-      maxIterations: 4,
-      getFractal: (iteration) => mengerSponge.getMengerSponge(iteration),
-      active: false,
-    },
-  ];
+  let activeFractalIdx = parseInt(localStorage.getItem('activeFractalIdx'));
+  let fractals = [KochSnowflake, SierpinskiTriangle, MengerSponge];
+
+  if (!activeFractalIdx) {
+    activeFractalIdx = 0;
+    localStorage.setItem('activeFractalIdx', activeFractalIdx);
+  }
+
+  for (let i = 0; i < fractals.length; i++) {
+    if (i === activeFractalIdx) {
+      fractals[i].active = true;
+    } else {
+      fractals[i].active = false;
+    }
+  }
+
+  return fractals;
 };
 
 /**
