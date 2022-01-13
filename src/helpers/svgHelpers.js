@@ -260,7 +260,7 @@ const getPolylineFromPolylines = (polylines, width) => {
   polyline.setAttribute('fill', 'none');
 
   return polyline;
-}
+};
 
 /**
  * Function that receives an SVG polyline element and deconcatenates its points
@@ -279,10 +279,7 @@ const getPolylinesFromPolyline = (polyline) => {
     );
     polyline.setAttribute('stroke-width', '1');
     polyline.setAttribute('stroke', helpers.PALETTE.darkBlue);
-    polyline.setAttribute(
-      'points',
-      `${points[i]} ${points[i + 1]}`
-    );
+    polyline.setAttribute('points', `${points[i]} ${points[i + 1]}`);
 
     polylines.push(polyline);
 
