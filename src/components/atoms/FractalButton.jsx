@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import { FractalsContext } from '../organisms/FractalDisplay';
 
 function FractalButton(props) {
-  const { fractals, setFractals, setActiveFractal } =
-    useContext(FractalsContext);
+  const { fractals, setFractals } = useContext(FractalsContext);
 
   // Change the active fractal
   const handleToggleFractalDisplay = () => {
@@ -14,8 +13,8 @@ function FractalButton(props) {
         newFractals.push({ ...fractals[i], active: i === props.index });
       }
 
+      localStorage.setItem('activeFractalIdx', props.index);
       setFractals(newFractals);
-      setActiveFractal(newFractals[props.index]);
     }
   };
 
