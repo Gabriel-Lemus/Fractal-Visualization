@@ -104,33 +104,6 @@
     background-color: #808080;
     cursor: default; }
 
-.fractal-canvas-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 3vh 5%;
-  width: 90%;
-  transition: all 0.5s ease; }
-
-#fractal-canvas {
-  width: 100%; }
-  @media (max-width: 480px) {
-    #fractal-canvas {
-      height: 37vh; } }
-  @media (min-width: 481px) and (max-width: 767px) {
-    #fractal-canvas {
-      height: 50vh; } }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    #fractal-canvas {
-      height: 55vh; } }
-  @media (min-width: 1025px) and (max-width: 1280px) {
-    #fractal-canvas {
-      height: 60vh; } }
-  @media (min-width: 1281px) {
-    #fractal-canvas {
-      height: 65vh; } }
-
 @media (max-width: 767px) {
   .buttons-header {
     display: flex;
