@@ -34,8 +34,6 @@ function FractalDisplay() {
     // Redraw fractal on window resize or orientation change
     window.addEventListener('resize', handleRedraw);
     window.addEventListener('orientationchange', handleRedraw);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeFractal]);
 
   return (

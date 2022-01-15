@@ -114,7 +114,7 @@ const setDrawingArea = () => {
  */
 const clearSvg = () => {
   const svg = document.getElementById('fractal-canvas');
-  svg.innerHTML = '';
+  svg.parentNode.replaceChild(svg.cloneNode(false), svg);
 };
 
 /**

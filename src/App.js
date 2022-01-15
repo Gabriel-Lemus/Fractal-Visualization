@@ -1,3 +1,4 @@
+import React from 'react';
 import FractalDisplay from './components/organisms/FractalDisplay';
 
 function App() {
